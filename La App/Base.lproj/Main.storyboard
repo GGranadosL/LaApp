@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="La_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4th-mE-kLE">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Contactos" id="jS2-Dc-a8I"/>
+                                </items>
+                            </navigationBar>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="CdL-iI-gIB">
+                                <rect key="frame" x="0.0" y="64" width="375" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="qxi-eJ-RNb"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="CdL-iI-gIB" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="D0Y-pP-xCG"/>
+                            <constraint firstItem="4th-mE-kLE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="HqH-BU-TJj"/>
+                            <constraint firstItem="CdL-iI-gIB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="SJu-6d-TlW"/>
+                            <constraint firstItem="4th-mE-kLE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Yci-B3-cvw"/>
+                            <constraint firstItem="CdL-iI-gIB" firstAttribute="top" secondItem="4th-mE-kLE" secondAttribute="bottom" id="f7Y-4z-5mp"/>
+                            <constraint firstItem="4th-mE-kLE" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="j6f-Pb-2Wa"/>
+                            <constraint firstItem="CdL-iI-gIB" firstAttribute="top" secondItem="4th-mE-kLE" secondAttribute="bottom" id="k0o-eS-KT4"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="cwd-oE-LGs" id="ju8-lH-RuN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="cwd-oE-LGs">
+                    <connections>
+                        <outlet property="delegate" destination="BYZ-38-t0r" id="gg5-K5-LY7"/>
+                        <outlet property="searchContentsController" destination="BYZ-38-t0r" id="OUE-T4-LBg"/>
+                        <outlet property="searchResultsDataSource" destination="BYZ-38-t0r" id="oyx-NZ-sbo"/>
+                        <outlet property="searchResultsDelegate" destination="BYZ-38-t0r" id="mjo-fY-6n3"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+        </scene>
+    </scenes>
+</document>
