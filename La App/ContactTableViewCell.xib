@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="52" id="KGk-i7-Jjw" customClass="ContactTableViewCell" customModule="La_App" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="51.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="ERq-06-zxO">
+                        <rect key="frame" x="56" y="6" width="249" height="40"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Gerardo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WWg-QL-aZv">
+                                <rect key="frame" x="0.0" y="0.0" width="62.5" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+52 (55) 31404162" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ze8-3M-RDC">
+                                <rect key="frame" x="0.0" y="23" width="123" height="17"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="RdA-Fy-OD1"/>
+                        </constraints>
+                    </stackView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="r4j-it-AkK">
+                        <rect key="frame" x="16" y="13.5" width="25" height="25"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="25" id="Q2S-9X-K8v"/>
+                            <constraint firstAttribute="height" constant="25" id="bwO-MG-GoS"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="ERq-06-zxO" secondAttribute="trailing" constant="15" id="5ig-S8-X9k"/>
+                    <constraint firstItem="ERq-06-zxO" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="DzA-DN-gYv"/>
+                    <constraint firstItem="r4j-it-AkK" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Enl-G5-Ouc"/>
+                    <constraint firstItem="r4j-it-AkK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="eoM-Ot-MCg"/>
+                    <constraint firstItem="ERq-06-zxO" firstAttribute="leading" secondItem="r4j-it-AkK" secondAttribute="trailing" constant="15" id="xvI-OX-0w6"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="imgThumbnail" destination="r4j-it-AkK" id="vu5-tk-Lcj"/>
+                <outlet property="lblName" destination="WWg-QL-aZv" id="bR2-PT-oxL"/>
+                <outlet property="lblPhone" destination="ze8-3M-RDC" id="dVz-p6-Lue"/>
+            </connections>
+            <point key="canvasLocation" x="68.799999999999997" y="97.151424287856074"/>
+        </tableViewCell>
+    </objects>
+</document>
