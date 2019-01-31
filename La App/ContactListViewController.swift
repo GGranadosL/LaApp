@@ -15,12 +15,20 @@ class ContactListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    /**
+     declare variables and contstants
+     
+     var contacts = registered users
+     var sortedContacts : All contacts sorted by alphabetical order
+     var filteredContacts : contacts whit filter applied
+     var filterring = is true when is searching
+     */
+    
     fileprivate var contacts = [Contact]()
     fileprivate var sortedContacts : [[Contact]] = []
     fileprivate var filteredContacts : [[Contact]] = []
     fileprivate var filterring = false
     
-    private let refreshControl = UIRefreshControl()
     
     var users = [Contact]()
     var registeredNumbers = [String]()
@@ -39,11 +47,6 @@ class ContactListViewController: UIViewController {
         navigationItem.hidesSearchBarWhenScrolling = false
         search.dimsBackgroundDuringPresentation = false
         self.navigationItem.searchController = search
-        if #available(iOS 10.0, *) {
-            tableView.refreshControl = refreshControl
-        } else {
-            tableView.addSubview(refreshControl)
-        }
         getContacts()
     }
     
@@ -51,6 +54,7 @@ class ContactListViewController: UIViewController {
         tableView.reloadData()
     }
     
+    /// get all contacts from CNContactStore call on viewdidload
     private func getContacts() {
         let store = CNContactStore()
         store.requestAccess(for: .contacts) { (granted, err) in
@@ -70,6 +74,7 @@ class ContactListViewController: UIViewController {
                 } catch let err {
                     print("Failed to get contacts: ", err)
                 }
+                /// split one dimentional array in sorted two dimentional array
                 self.splitContacts()
             } else {
                 print("Access denied..")
@@ -78,11 +83,19 @@ class ContactListViewController: UIViewController {
         
     }
     
+    /**
+     Check if the numbers of firestore occurrences in own contacts and fill another array (users: firestore && CNContactStore)
+     
+     - Parameters:
+     - registeredNumbers: list from firestore
+     
+     */
     func compare (registeredNumbers: [String]) {
         for number in registeredNumbers {
             for i in contacts {
                 let asNumber = i.phoneNumber?.replacingOccurrences(of: " 1 ", with: "").replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "").replacingOccurrences(of: "+52", with: "").replacingOccurrences(of: "(55)", with: "").replacingOccurrences(of: " ", with: "")
                 if asNumber == number {
+                    /// fill users array
                     users.append(Contact.init(fullName: i.fullName!, phoneNumber: i.phoneNumber!))
                 }
             }
@@ -90,9 +103,10 @@ class ContactListViewController: UIViewController {
         }
     }
     
+    /// get all contacts from firestore
     func getCollection(){
         let db = Firestore.firestore()
-        // [START get_collection]
+        /// getDocuments of collection contacts
         db.collection("contacts").getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
@@ -103,13 +117,15 @@ class ContactListViewController: UIViewController {
                 }
                 print("Hola numeros: \(self.registeredNumbers.count)")
                 if self.registeredNumbers.count > 0 {
+                    /// compare contacts from firestore
                     self.compare(registeredNumbers: self.registeredNumbers)
                 }
             }
         }
-        // [END get_collection]
+        
     }
     
+    /// split one dimentional array in sorted two dimentional array
     func splitContacts() {
         let unicodeScalarA = UnicodeScalar("a")!
         sortedContacts = contacts.reduce([[Contact]]()) { (output, value) -> [[Contact]] in
@@ -131,9 +147,11 @@ class ContactListViewController: UIViewController {
             Utils.register(vc: self)
             tableView.reloadData()
         }
+        /// get all contacts from firestore
         getCollection()
     }
     
+    /// pass data contact to detail view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "contactDetail" {
             let viewController: ContactDetailViewController = segue.destination as! ContactDetailViewController
@@ -142,8 +160,9 @@ class ContactListViewController: UIViewController {
     }
 }
 
+// MARK: UISearchResultsUpdating, UISearchBarDelegate
 extension ContactListViewController: UISearchResultsUpdating, UISearchBarDelegate {
-
+    
     func updateSearchResults(for searchController: UISearchController) {
         if let text = searchController.searchBar.text, !text.isEmpty {
             let num = Int(text)
@@ -172,10 +191,6 @@ extension ContactListViewController: UISearchResultsUpdating, UISearchBarDelegat
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let text = searchBar.text, !text.isEmpty {
-            //            self.filteredContacts = self.sortedContacts.filter {
-            //                $0[0].fullName!.lowercased().range(of: text.lowercased()) != nil
-            //                    || $0[1].fullName!.lowercased().range(of: text.lowercased()) != nil
-            //            }
             let num = Int(text)
             if num != nil {
                 self.filteredContacts = sortedContacts.filter { (dataArray:[Contact]) -> Bool in
@@ -201,6 +216,7 @@ extension ContactListViewController: UISearchResultsUpdating, UISearchBarDelegat
     }
 }
 
+// MARK: UITableViewDelegate, UITableViewDataSource
 extension ContactListViewController: MFMessageComposeViewControllerDelegate {
     func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
         //... handle sms screen actions
@@ -208,8 +224,8 @@ extension ContactListViewController: MFMessageComposeViewControllerDelegate {
     }
 }
 
+// MARK: UITableViewDelegate, UITableViewDataSource
 extension ContactListViewController: UITableViewDelegate, UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             performSegue(withIdentifier: "contactDetail", sender: indexPath)

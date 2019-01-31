@@ -15,6 +15,7 @@ class ContactDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        /// Set data in title and phone label
         navigationItem.title = contact?.fullName
         lblPhoneNumber.text = contact?.phoneNumber
     }

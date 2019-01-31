@@ -10,11 +10,22 @@ import UIKit
 import Firebase
 import FirebaseFirestore
 
+// Strings constants
 let cell_id: String = "contact"
 let app_register: String = "isRegistered"
 
 class Utils: NSObject {
     
+    /**
+     Check if the numbers and names has numbers or letter.
+     
+     Use when fill arrays
+     
+     - Parameters:
+     - input: String
+     
+     - Returns: A boolean value
+     */
     static func containsOnlyLetters(input: String) -> Bool {
         for chr in input {
             if (!(chr >= "a" && chr <= "z") && !(chr >= "A" && chr <= "Z") ) {
@@ -28,6 +39,14 @@ class Utils: NSObject {
         UserDefaults.standard.set(status, forKey: app_register)
     }
     
+    /**
+     shows a uilaert with textfield that validate and create a user of La App
+     
+     - Parameters:
+     - vc: view controller that shows alert
+     
+     - Returns: Void
+     */
     static func register(vc: UIViewController){
         //1. Create the alert controller.
         let alert = UIAlertController(title: "LaApp", message: "Introduce tu número celular a 10 dígitos: ", preferredStyle: .alert)
@@ -48,35 +67,46 @@ class Utils: NSObject {
         vc.present(alert, animated: true, completion: nil)
     }
     
+    /**
+     find a duplicate in database if not registered then create a user
+     
+     - Parameters:
+     - number: user number
+     - vc: view controller that shows feedback
+     
+     - Returns: Void
+     */
     static func validateNumberDB(number: String, vc: UIViewController) {
-       
         let db = Firestore.firestore().collection("contacts")
-        
         DispatchQueue.main.async {
-            
             db.whereField("phoneNumber", isEqualTo: number).getDocuments() { (querySnapshot, err) in
-                    
-                    if let err = err {
-                        print("Error getting documents: \(err)")
-                    } else {
-                        if querySnapshot?.isEmpty ?? false {
-                            print("Phone number not registered")
-                            DispatchQueue.main.async {
-                                self.createDocument(number: number, vc: vc)
-                            }
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    if querySnapshot?.isEmpty ?? false {
+                        print("Phone number not registered")
+                        DispatchQueue.main.async {
+                            self.createDocument(number: number, vc: vc)
                         }
-                        else {
-                            print("Phone number already registered")
-                            self.isRegistered(status: true)
-                        }
-                        
                     }
-                    
+                    else {
+                        print("Phone number already registered")
+                        self.isRegistered(status: true)
+                    }
+                }
             }
-            
         }
     }
     
+    /**
+     Create a document in firestore
+     
+     - Parameters:
+     - number: user number
+     - vc: view controller that shows feedback
+     
+     - Returns: Void
+     */
     static func createDocument(number:String, vc: UIViewController) {
         let db = Firestore.firestore().collection("contacts")
         print("Entrando a firestore")
@@ -93,6 +123,7 @@ class Utils: NSObject {
                         UIAlertAction in
                         self.isRegistered(status: true)
                         vc.reloadInputViews()
+                        
                     }
                     alert.addAction(okAction)
                     vc.present(alert, animated: true, completion: nil)
@@ -101,6 +132,16 @@ class Utils: NSObject {
         }
     }
     
+    /**
+     Take a name and get his number.
+     Calling this method to send message
+     
+     - Parameters:
+     - name: compare name
+     - contacts: all contacts
+     
+     - Returns: A number
+     */
     static func getNumber(name: String, contacts: [Contact]) -> String {
         var number = ""
         for contact in contacts {
@@ -112,16 +153,25 @@ class Utils: NSObject {
     }
 }
 
+/// A basic model of contacts
 class Contact: NSObject {
     var fullName: String? = nil
     var phoneNumber: String? = nil
     
+    /**
+     Initializes a new contact with the two specifications.
+     
+     - Parameters:
+     - fullName: full name of contact
+     - phoneNumber: number of contact
+     
+     - Returns: A contact
+     */
     init(fullName: String, phoneNumber: String) {
         self.fullName = fullName
         self.phoneNumber = phoneNumber
     }
     
     override init() {
-        
     }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A69393960E9EDD0A103CB918 /* Pods_La_AppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 040F5965EEE79DF98408D260 /* Pods_La_AppTests.framework */; };
 		B764027087DD413858653585 /* Pods_La_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09A277BEA40DF0C044260FEC /* Pods_La_App.framework */; };
 		FA207E8B2200101600C18D89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA207E8A2200101600C18D89 /* AppDelegate.swift */; };
 		FA207E902200101600C18D89 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA207E8E2200101600C18D89 /* Main.storyboard */; };
@@ -18,12 +19,26 @@
 		FAC60AC422017637006110CC /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC60AC222017637006110CC /* ContactTableViewCell.swift */; };
 		FAC60AC522017637006110CC /* ContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAC60AC322017637006110CC /* ContactTableViewCell.xib */; };
 		FACC5A0A2202BFF8005FFC34 /* ContactDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACC5A092202BFF8005FFC34 /* ContactDetailViewController.swift */; };
+		FACC5A12220373DF005FFC34 /* La_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACC5A11220373DF005FFC34 /* La_AppTests.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		FACC5A14220373DF005FFC34 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA207E7F2200101600C18D89 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA207E862200101600C18D89;
+			remoteInfo = "La App";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		040F5965EEE79DF98408D260 /* Pods_La_AppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_La_AppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		09A277BEA40DF0C044260FEC /* Pods_La_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_La_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		55814F0B942A69133FE931A5 /* Pods-La App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-La App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-La App/Pods-La App.debug.xcconfig"; sourceTree = "<group>"; };
+		5E1CE2C7B88E7650E6689558 /* Pods-La AppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-La AppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-La AppTests/Pods-La AppTests.release.xcconfig"; sourceTree = "<group>"; };
 		677FBBB247670E5BD366B1E3 /* Pods-La App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-La App.release.xcconfig"; path = "Pods/Target Support Files/Pods-La App/Pods-La App.release.xcconfig"; sourceTree = "<group>"; };
+		A2F6FD8F3FB396A56DF2BC5A /* Pods-La AppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-La AppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-La AppTests/Pods-La AppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FA207E872200101600C18D89 /* La App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "La App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA207E8A2200101600C18D89 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA207E8F2200101600C18D89 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -36,6 +51,9 @@
 		FAC60AC222017637006110CC /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 		FAC60AC322017637006110CC /* ContactTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactTableViewCell.xib; sourceTree = "<group>"; };
 		FACC5A092202BFF8005FFC34 /* ContactDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailViewController.swift; sourceTree = "<group>"; };
+		FACC5A0F220373DF005FFC34 /* La AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "La AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FACC5A11220373DF005FFC34 /* La_AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = La_AppTests.swift; sourceTree = "<group>"; };
+		FACC5A13220373DF005FFC34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +65,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FACC5A0C220373DF005FFC34 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A69393960E9EDD0A103CB918 /* Pods_La_AppTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -54,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				09A277BEA40DF0C044260FEC /* Pods_La_App.framework */,
+				040F5965EEE79DF98408D260 /* Pods_La_AppTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -63,6 +90,8 @@
 			children = (
 				55814F0B942A69133FE931A5 /* Pods-La App.debug.xcconfig */,
 				677FBBB247670E5BD366B1E3 /* Pods-La App.release.xcconfig */,
+				A2F6FD8F3FB396A56DF2BC5A /* Pods-La AppTests.debug.xcconfig */,
+				5E1CE2C7B88E7650E6689558 /* Pods-La AppTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -71,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				FA207E892200101600C18D89 /* La App */,
+				FACC5A10220373DF005FFC34 /* La AppTests */,
 				FA207E882200101600C18D89 /* Products */,
 				B677B013693E3982C274EE4E /* Pods */,
 				5D8DEFBA3AB070627AF28284 /* Frameworks */,
@@ -81,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				FA207E872200101600C18D89 /* La App.app */,
+				FACC5A0F220373DF005FFC34 /* La AppTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -101,6 +132,15 @@
 				FACC5A092202BFF8005FFC34 /* ContactDetailViewController.swift */,
 			);
 			path = "La App";
+			sourceTree = "<group>";
+		};
+		FACC5A10220373DF005FFC34 /* La AppTests */ = {
+			isa = PBXGroup;
+			children = (
+				FACC5A11220373DF005FFC34 /* La_AppTests.swift */,
+				FACC5A13220373DF005FFC34 /* Info.plist */,
+			);
+			path = "La AppTests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,6 +165,26 @@
 			productReference = FA207E872200101600C18D89 /* La App.app */;
 			productType = "com.apple.product-type.application";
 		};
+		FACC5A0E220373DF005FFC34 /* La AppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FACC5A16220373DF005FFC34 /* Build configuration list for PBXNativeTarget "La AppTests" */;
+			buildPhases = (
+				DED5BA4B7AB706C90E22113C /* [CP] Check Pods Manifest.lock */,
+				FACC5A0B220373DF005FFC34 /* Sources */,
+				FACC5A0C220373DF005FFC34 /* Frameworks */,
+				FACC5A0D220373DF005FFC34 /* Resources */,
+				718BDABFB5D1D03DF7C38138 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FACC5A15220373DF005FFC34 /* PBXTargetDependency */,
+			);
+			name = "La AppTests";
+			productName = "La AppTests";
+			productReference = FACC5A0F220373DF005FFC34 /* La AppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -137,6 +197,10 @@
 				TargetAttributes = {
 					FA207E862200101600C18D89 = {
 						CreatedOnToolsVersion = 10.1;
+					};
+					FACC5A0E220373DF005FFC34 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = FA207E862200101600C18D89;
 					};
 				};
 			};
@@ -154,6 +218,7 @@
 			projectRoot = "";
 			targets = (
 				FA207E862200101600C18D89 /* La App */,
+				FACC5A0E220373DF005FFC34 /* La AppTests */,
 			);
 		};
 /* End PBXProject section */
@@ -168,6 +233,13 @@
 				FA6C67BD2202181C00AF5CE1 /* GoogleService-Info.plist in Resources */,
 				FA207E922200101900C18D89 /* Assets.xcassets in Resources */,
 				FA207E902200101600C18D89 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FACC5A0D220373DF005FFC34 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,6 +280,30 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-La App/Pods-La App-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		718BDABFB5D1D03DF7C38138 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-La AppTests/Pods-La AppTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-La AppTests/Pods-La AppTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		7B39E8318AF827925018F030 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -230,6 +326,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		DED5BA4B7AB706C90E22113C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-La AppTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -245,7 +363,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FACC5A0B220373DF005FFC34 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FACC5A12220373DF005FFC34 /* La_AppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FACC5A15220373DF005FFC34 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA207E862200101600C18D89 /* La App */;
+			targetProxy = FACC5A14220373DF005FFC34 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		FA207E8E2200101600C18D89 /* Main.storyboard */ = {
@@ -421,6 +555,48 @@
 			};
 			name = Release;
 		};
+		FACC5A17220373DF005FFC34 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A2F6FD8F3FB396A56DF2BC5A /* Pods-La AppTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 693Y489Q85;
+				INFOPLIST_FILE = "La AppTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.test.La-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/La App.app/La App";
+			};
+			name = Debug;
+		};
+		FACC5A18220373DF005FFC34 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5E1CE2C7B88E7650E6689558 /* Pods-La AppTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 693Y489Q85;
+				INFOPLIST_FILE = "La AppTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.test.La-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/La App.app/La App";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -438,6 +614,15 @@
 			buildConfigurations = (
 				FA207E9A2200101900C18D89 /* Debug */,
 				FA207E9B2200101900C18D89 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FACC5A16220373DF005FFC34 /* Build configuration list for PBXNativeTarget "La AppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FACC5A17220373DF005FFC34 /* Debug */,
+				FACC5A18220373DF005FFC34 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
