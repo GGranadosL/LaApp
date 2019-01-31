@@ -15,8 +15,12 @@ class ContactListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var contacts = [Contact]()
-    var sortedContacts : [[Contact]] = []
+    fileprivate var contacts = [Contact]()
+    fileprivate var sortedContacts : [[Contact]] = []
+    fileprivate var filteredContacts : [[Contact]] = []
+    fileprivate var filterring = false
+    
+    private let refreshControl = UIRefreshControl()
     
     var users = [Contact]()
     var registeredNumbers = [String]()
@@ -24,7 +28,6 @@ class ContactListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Contactos"
-        
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UINib(nibName: "ContactTableViewCell", bundle: nil), forCellReuseIdentifier: "contact")
@@ -33,7 +36,14 @@ class ContactListViewController: UIViewController {
         search.searchResultsUpdater = self
         search.searchBar.barStyle = .blackTranslucent
         search.searchBar.placeholder = "Buscar nombre o teléfono"
+        navigationItem.hidesSearchBarWhenScrolling = false
+        search.dimsBackgroundDuringPresentation = false
         self.navigationItem.searchController = search
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
+        } else {
+            tableView.addSubview(refreshControl)
+        }
         getContacts()
     }
     
@@ -132,9 +142,62 @@ class ContactListViewController: UIViewController {
     }
 }
 
-extension ContactListViewController: UISearchResultsUpdating {
+extension ContactListViewController: UISearchResultsUpdating, UISearchBarDelegate {
+
     func updateSearchResults(for searchController: UISearchController) {
-        //TODO
+        if let text = searchController.searchBar.text, !text.isEmpty {
+            let num = Int(text)
+            if num != nil {
+                self.filteredContacts = sortedContacts.filter { (dataArray:[Contact]) -> Bool in
+                    return dataArray.filter({ (contact) -> Bool in
+                        return (dataArray.first?.phoneNumber?.lowercased().contains(text.lowercased()))!
+                    }).count > 0
+                }
+            }
+            else {
+                self.filteredContacts = sortedContacts.filter { (dataArray:[Contact]) -> Bool in
+                    return dataArray.filter({ (contact) -> Bool in
+                        return (dataArray.first?.fullName?.lowercased().contains(text.lowercased()))!
+                    }).count > 0
+                }
+            }
+            self.filterring = true
+            
+        } else {
+            self.filterring = false
+            self.filteredContacts = [[Contact]]()
+        }
+        self.tableView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let text = searchBar.text, !text.isEmpty {
+            //            self.filteredContacts = self.sortedContacts.filter {
+            //                $0[0].fullName!.lowercased().range(of: text.lowercased()) != nil
+            //                    || $0[1].fullName!.lowercased().range(of: text.lowercased()) != nil
+            //            }
+            let num = Int(text)
+            if num != nil {
+                self.filteredContacts = sortedContacts.filter { (dataArray:[Contact]) -> Bool in
+                    return dataArray.filter({ (contact) -> Bool in
+                        return (dataArray.first?.phoneNumber?.lowercased().contains(text.lowercased()))!
+                    }).count > 0
+                }
+            }
+            else {
+                self.filteredContacts = sortedContacts.filter { (dataArray:[Contact]) -> Bool in
+                    return dataArray.filter({ (contact) -> Bool in
+                        return (dataArray.first?.fullName?.lowercased().contains(text.lowercased()))!
+                    }).count > 0
+                }
+            }
+            self.filterring = true
+            
+        } else {
+            self.filterring = false
+            self.filteredContacts = [[Contact]]()
+        }
+        self.tableView.reloadData()
     }
 }
 
@@ -179,14 +242,14 @@ extension ContactListViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return sortedContacts.count+1
+        return self.filterring ? filteredContacts.count+1 : sortedContacts.count+1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return users.count
         } else {
-            return sortedContacts[section-1].count
+            return self.filterring ? filteredContacts[section-1].count : sortedContacts[section-1].count
         }
         
     }
@@ -203,9 +266,17 @@ extension ContactListViewController: UITableViewDelegate, UITableViewDataSource 
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: cell_id, for: indexPath) as! ContactTableViewCell
-            if sortedContacts.count > 1 {
-                cell.lblName.text = sortedContacts[indexPath.section-1][indexPath.item].fullName
-                cell.lblInitial.text = String((sortedContacts[indexPath.section-1][indexPath.item].fullName!.first)!).uppercased()
+            if self.filterring {
+                
+                if filteredContacts.count > 1 {
+                    cell.lblName.text = filteredContacts[indexPath.section-1][indexPath.item].fullName
+                    cell.lblInitial.text = String((filteredContacts[indexPath.section-1][indexPath.item].fullName!.first)!).uppercased()
+                }
+            } else {
+                if sortedContacts.count > 1 {
+                    cell.lblName.text = sortedContacts[indexPath.section-1][indexPath.item].fullName
+                    cell.lblInitial.text = String((sortedContacts[indexPath.section-1][indexPath.item].fullName!.first)!).uppercased()
+                }
             }
             cell.lblPhone.isHidden = true
             return cell
@@ -225,8 +296,14 @@ extension ContactListViewController: UITableViewDelegate, UITableViewDataSource 
             }
         } else {
             let label = UILabel.init()
-            if sortedContacts.count > 1 {
-                label.text = String(sortedContacts[section-1][0].fullName!.first!).uppercased()
+            if self.filterring {
+                if filteredContacts.count > 1 {
+                    label.text = String(filteredContacts[section-1][0].fullName!.first!).uppercased()
+                }
+            } else {
+                if sortedContacts.count > 1 {
+                    label.text = String(sortedContacts[section-1][0].fullName!.first!).uppercased()
+                }
             }
             label.backgroundColor = UIColor.lightGray
             return label
