@@ -32,7 +32,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="kp3-rp-3YL"/>
+                    <navigationItem key="navigationItem" id="kp3-rp-3YL">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="Jat-eK-wRj">
+                            <connections>
+                                <action selector="refreshContacts:" destination="BYZ-38-t0r" id="chM-xq-Yar"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="searchDisplayController" destination="cwd-oE-LGs" id="ju8-lH-RuN"/>
                         <outlet property="tableView" destination="kje-8N-6hk" id="AAE-pm-u3B"/>

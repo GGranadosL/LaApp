@@ -18,20 +18,20 @@ class ContactListViewController: UIViewController {
     /**
      declare variables and contstants
      
-     var contacts = registered users
+     var contacts = All contacts
      var sortedContacts : All contacts sorted by alphabetical order
      var filteredContacts : contacts whit filter applied
+     var users = registered users
+     var registeredNumbers = fireStore user
      var filterring = is true when is searching
      */
     
     fileprivate var contacts = [Contact]()
     fileprivate var sortedContacts : [[Contact]] = []
     fileprivate var filteredContacts : [[Contact]] = []
+    fileprivate var users = [Contact]()
+    fileprivate var registeredNumbers = [String]()
     fileprivate var filterring = false
-    
-    
-    var users = [Contact]()
-    var registeredNumbers = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +52,16 @@ class ContactListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
+    }
+    
+    /// refresh table
+    @IBAction func refreshContacts(_ sender: Any) {
+        contacts.removeAll()
+        sortedContacts.removeAll()
+        filteredContacts.removeAll()
+        users.removeAll()
+        registeredNumbers.removeAll()
+        getContacts()
     }
     
     /// get all contacts from CNContactStore call on viewdidload
