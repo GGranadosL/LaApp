@@ -101,44 +101,14 @@ class Utils: NSObject {
         }
     }
     
-    static func getCollection() -> [String] {
-        let db = Firestore.firestore()
-        var numbers = [String]()
-        // [START get_collection]
-        DispatchQueue.main.async {
-        db.collection("contacts").getDocuments() { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                for document in querySnapshot!.documents {
-                    print(document.data()["phoneNumber"] as! String)
-                    numbers.append(document.data()["phoneNumber"] as! String)
-                }
+    static func getNumber(name: String, contacts: [Contact]) -> String {
+        var number = ""
+        for contact in contacts {
+            if contact.fullName == name {
+                number = contact.phoneNumber!
             }
         }
-        // [END get_collection]
-        print(numbers.count)
-        }
-        return numbers
-    }
-    
-    func getCollection() -> [String] {
-        let db = Firestore.firestore()
-        var numbers = [String]()
-        // [START get_collection]
-        db.collection("contacts").getDocuments() { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                for document in querySnapshot!.documents {
-                    print(document.data()["phoneNumber"] as! String)
-                    numbers.append(document.data()["phoneNumber"] as! String)
-                }
-            }
-        }
-        // [END get_collection]
-        print(numbers.count)
-        return numbers
+        return number
     }
 }
 
@@ -149,5 +119,9 @@ class Contact: NSObject {
     init(fullName: String, phoneNumber: String) {
         self.fullName = fullName
         self.phoneNumber = phoneNumber
+    }
+    
+    override init() {
+        
     }
 }

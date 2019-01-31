@@ -17,6 +17,7 @@
 		FAC60AC122015EB0006110CC /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC60AC022015EB0006110CC /* Utils.swift */; };
 		FAC60AC422017637006110CC /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC60AC222017637006110CC /* ContactTableViewCell.swift */; };
 		FAC60AC522017637006110CC /* ContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAC60AC322017637006110CC /* ContactTableViewCell.xib */; };
+		FACC5A0A2202BFF8005FFC34 /* ContactDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACC5A092202BFF8005FFC34 /* ContactDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		FAC60AC022015EB0006110CC /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		FAC60AC222017637006110CC /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 		FAC60AC322017637006110CC /* ContactTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactTableViewCell.xib; sourceTree = "<group>"; };
+		FACC5A092202BFF8005FFC34 /* ContactDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 				FAC60AC022015EB0006110CC /* Utils.swift */,
 				FAC60AC222017637006110CC /* ContactTableViewCell.swift */,
 				FAC60AC322017637006110CC /* ContactTableViewCell.xib */,
+				FACC5A092202BFF8005FFC34 /* ContactDetailViewController.swift */,
 			);
 			path = "La App";
 			sourceTree = "<group>";
@@ -235,6 +238,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAC60AC422017637006110CC /* ContactTableViewCell.swift in Sources */,
+				FACC5A0A2202BFF8005FFC34 /* ContactDetailViewController.swift in Sources */,
 				FA207E8B2200101600C18D89 /* AppDelegate.swift in Sources */,
 				FAC60ABF2201249D006110CC /* ContactListViewController.swift in Sources */,
 				FAC60AC122015EB0006110CC /* Utils.swift in Sources */,

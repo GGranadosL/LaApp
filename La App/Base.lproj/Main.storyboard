@@ -36,7 +36,7 @@
                     <connections>
                         <outlet property="searchDisplayController" destination="cwd-oE-LGs" id="ju8-lH-RuN"/>
                         <outlet property="tableView" destination="kje-8N-6hk" id="AAE-pm-u3B"/>
-                        <segue destination="KRV-7R-ChA" kind="show" id="Cu8-JX-ntc"/>
+                        <segue destination="KRV-7R-ChA" kind="show" identifier="contactDetail" id="Cu8-JX-ntc"/>
                     </connections>
                 </viewController>
                 <searchDisplayController id="cwd-oE-LGs">
@@ -51,16 +51,31 @@
             </objects>
             <point key="canvasLocation" x="1143.2" y="26.53673163418291"/>
         </scene>
-        <!--View Controller-->
+        <!--Contact Detail View Controller-->
         <scene sceneID="lVH-7g-60l">
             <objects>
-                <viewController id="KRV-7R-ChA" sceneMemberID="viewController">
+                <viewController id="KRV-7R-ChA" customClass="ContactDetailViewController" customModule="La_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eIJ-mV-7Dt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="55 3140 4162" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1sg-Ir-k0n">
+                                <rect key="frame" x="56" y="311" width="263.5" height="45.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="38"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="1sg-Ir-k0n" firstAttribute="centerX" secondItem="eIJ-mV-7Dt" secondAttribute="centerX" id="MvX-Ie-b9m"/>
+                            <constraint firstItem="1sg-Ir-k0n" firstAttribute="centerY" secondItem="eIJ-mV-7Dt" secondAttribute="centerY" id="seh-PD-hgY"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Bho-Ce-yIZ"/>
                     </view>
+                    <connections>
+                        <outlet property="lblPhoneNumber" destination="1sg-Ir-k0n" id="rf4-OA-KF7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gbh-PG-Twd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

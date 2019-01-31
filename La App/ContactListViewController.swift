@@ -9,6 +9,7 @@
 import UIKit
 import Contacts
 import FirebaseFirestore
+import MessageUI
 
 class ContactListViewController: UIViewController {
     
@@ -123,6 +124,13 @@ class ContactListViewController: UIViewController {
         }
         getCollection()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "contactDetail" {
+            let viewController: ContactDetailViewController = segue.destination as! ContactDetailViewController
+            viewController.contact = users[(sender as! IndexPath).item]
+        }
+    }
 }
 
 extension ContactListViewController: UISearchResultsUpdating {
@@ -131,7 +139,31 @@ extension ContactListViewController: UISearchResultsUpdating {
     }
 }
 
+extension ContactListViewController: MFMessageComposeViewControllerDelegate {
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+        //... handle sms screen actions
+        self.dismiss(animated: true, completion: nil)
+    }
+}
+
 extension ContactListViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            performSegue(withIdentifier: "contactDetail", sender: indexPath)
+        } else {
+            let cell = tableView.cellForRow(at: indexPath) as! ContactTableViewCell
+            let number = Utils.getNumber(name: cell.lblName.text!, contacts: self.contacts)
+            if (MFMessageComposeViewController.canSendText()) {
+                let controller = MFMessageComposeViewController()
+                controller.body = "Hey descarga LaApp"
+                controller.recipients = [number]
+                print(number)
+                controller.messageComposeDelegate = self
+                self.present(controller, animated: true, completion: nil)
+            }
+        }
+    }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
@@ -168,6 +200,7 @@ extension ContactListViewController: UITableViewDelegate, UITableViewDataSource 
                 cell.lblPhone.text = users[indexPath.item].phoneNumber
                 cell.lblInitial.text = String((users[indexPath.item].fullName?.first)!).uppercased()
             }
+            cell.lblPhone.isHidden = false
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: cell_id, for: indexPath) as! ContactTableViewCell
