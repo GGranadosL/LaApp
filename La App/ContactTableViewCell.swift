@@ -13,6 +13,7 @@ class ContactTableViewCell: UITableViewCell {
     @IBOutlet weak var imgThumbnail: UIImageView!
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblPhone: UILabel!
+    @IBOutlet weak var lblInitial: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

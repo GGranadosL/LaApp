@@ -19,26 +19,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kje-8N-6hk">
-                                <rect key="frame" x="0.0" y="120" width="375" height="547"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="CdL-iI-gIB">
-                                <rect key="frame" x="0.0" y="64" width="375" height="56"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="56" id="qxi-eJ-RNb"/>
-                                </constraints>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="kje-8N-6hk" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="6Gz-zM-eEU"/>
-                            <constraint firstItem="CdL-iI-gIB" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="D0Y-pP-xCG"/>
                             <constraint firstItem="kje-8N-6hk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="FAK-9M-5eU"/>
-                            <constraint firstItem="kje-8N-6hk" firstAttribute="top" secondItem="CdL-iI-gIB" secondAttribute="bottom" id="K3m-v6-KmP"/>
-                            <constraint firstItem="CdL-iI-gIB" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="OYZ-fj-DGR"/>
-                            <constraint firstItem="CdL-iI-gIB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="SJu-6d-TlW"/>
                             <constraint firstItem="kje-8N-6hk" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="ngC-Kj-mx0"/>
+                            <constraint firstItem="kje-8N-6hk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="reS-3k-bSq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

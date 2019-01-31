@@ -47,18 +47,27 @@
                             <constraint firstAttribute="height" constant="25" id="bwO-MG-GoS"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="M" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OY4-t4-Ikk">
+                        <rect key="frame" x="21.5" y="15.5" width="14.5" height="20.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="ERq-06-zxO" secondAttribute="trailing" constant="15" id="5ig-S8-X9k"/>
                     <constraint firstItem="ERq-06-zxO" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="DzA-DN-gYv"/>
                     <constraint firstItem="r4j-it-AkK" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Enl-G5-Ouc"/>
+                    <constraint firstItem="OY4-t4-Ikk" firstAttribute="centerY" secondItem="r4j-it-AkK" secondAttribute="centerY" id="JEy-lK-uke"/>
                     <constraint firstItem="r4j-it-AkK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="eoM-Ot-MCg"/>
+                    <constraint firstItem="OY4-t4-Ikk" firstAttribute="centerX" secondItem="r4j-it-AkK" secondAttribute="centerX" id="grd-zd-M9h"/>
                     <constraint firstItem="ERq-06-zxO" firstAttribute="leading" secondItem="r4j-it-AkK" secondAttribute="trailing" constant="15" id="xvI-OX-0w6"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="imgThumbnail" destination="r4j-it-AkK" id="vu5-tk-Lcj"/>
+                <outlet property="lblInitial" destination="OY4-t4-Ikk" id="5re-wP-pqc"/>
                 <outlet property="lblName" destination="WWg-QL-aZv" id="bR2-PT-oxL"/>
                 <outlet property="lblPhone" destination="ze8-3M-RDC" id="dVz-p6-Lue"/>
             </connections>
