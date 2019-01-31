@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>508620344981-a18lm5mob85nud4fh98fh3cq192rs67f.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.508620344981-a18lm5mob85nud4fh98fh3cq192rs67f</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBUVVVdgSofp92fsQ8DOeTvawXoz_1un2E</string>
+	<key>GCM_SENDER_ID</key>
+	<string>508620344981</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.test.La-App</string>
+	<key>PROJECT_ID</key>
+	<string>laapp-af70a</string>
+	<key>STORAGE_BUCKET</key>
+	<string>laapp-af70a.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false></false>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:508620344981:ios:616a477dc5eaef6b</string>
+	<key>DATABASE_URL</key>
+	<string>https://laapp-af70a.firebaseio.com</string>
+</dict>
+</plist>
