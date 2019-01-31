@@ -16,9 +16,9 @@ class ContactListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var contacts = [Contact]()
+    var sortedContacts : [[Contact]] = []
+    
     var users = [Contact]()
-    var names = [String]()
-    var sortedNames : [[String]] = []
     var registeredNumbers = [String]()
     
     override func viewDidLoad() {
@@ -55,7 +55,6 @@ class ContactListViewController: UIViewController {
                     try store.enumerateContacts(with: request, usingBlock: { (contact, stopPointerIfYouWantToStopEnumerating) in
                         if Utils.containsOnlyLetters(input: contact.givenName) && contact.givenName != "" {
                             self.contacts.append(Contact.init(fullName: ("\(contact.givenName) \(contact.familyName)"), phoneNumber: contact.phoneNumbers.first?.value.stringValue ?? ""))
-                            self.names.append("\(contact.givenName) \(contact.familyName)")
                         }
                     })
                 } catch let err {
@@ -103,21 +102,21 @@ class ContactListViewController: UIViewController {
     
     func splitContacts() {
         let unicodeScalarA = UnicodeScalar("a")!
-        sortedNames = names.reduce([[String]]()) { (output, value) -> [[String]] in
+        sortedContacts = contacts.reduce([[Contact]]()) { (output, value) -> [[Contact]] in
             var output = output
             if output.count < 26 {
                 output = (1..<27).map{ _ in return []}
             }
-            if let first = value.first {
+            if let first = value.fullName?.first {
                 let prefix = String(describing: first).lowercased()
                 let prefixIndex = Int(UnicodeScalar(prefix)!.value - unicodeScalarA.value)
                 var array = output[prefixIndex]
                 array.append(value)
-                output[prefixIndex] = array.sorted()
+                output[prefixIndex] = array.sorted(by: {  $0.fullName! > $1.fullName! })
             }
             return output
         }
-        sortedNames = sortedNames.filter { $0.count > 0}
+        sortedContacts = sortedContacts.filter { $0.count > 0}
         if !UserDefaults.standard.bool(forKey: app_register){
             Utils.register(vc: self)
             tableView.reloadData()
@@ -157,8 +156,8 @@ extension ContactListViewController: UITableViewDelegate, UITableViewDataSource 
             if (MFMessageComposeViewController.canSendText()) {
                 let controller = MFMessageComposeViewController()
                 controller.body = "Hey descarga LaApp"
+                //controller.recipients = [sortedContacts[indexPath.section-1][indexPath.item].fullName!]
                 controller.recipients = [number]
-                print(number)
                 controller.messageComposeDelegate = self
                 self.present(controller, animated: true, completion: nil)
             }
@@ -180,14 +179,14 @@ extension ContactListViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return sortedNames.count+1
+        return sortedContacts.count+1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return users.count
         } else {
-            return sortedNames[section-1].count
+            return sortedContacts[section-1].count
         }
         
     }
@@ -195,7 +194,7 @@ extension ContactListViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: cell_id, for: indexPath) as! ContactTableViewCell
-            if sortedNames.count > 1 {
+            if sortedContacts.count > 1 {
                 cell.lblName.text = users[indexPath.item].fullName
                 cell.lblPhone.text = users[indexPath.item].phoneNumber
                 cell.lblInitial.text = String((users[indexPath.item].fullName?.first)!).uppercased()
@@ -204,9 +203,9 @@ extension ContactListViewController: UITableViewDelegate, UITableViewDataSource 
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: cell_id, for: indexPath) as! ContactTableViewCell
-            if sortedNames.count > 1 {
-                cell.lblName.text = sortedNames[indexPath.section-1][indexPath.item]
-                cell.lblInitial.text = String((sortedNames[indexPath.section-1][indexPath.item].first)!).uppercased()
+            if sortedContacts.count > 1 {
+                cell.lblName.text = sortedContacts[indexPath.section-1][indexPath.item].fullName
+                cell.lblInitial.text = String((sortedContacts[indexPath.section-1][indexPath.item].fullName!.first)!).uppercased()
             }
             cell.lblPhone.isHidden = true
             return cell
@@ -226,8 +225,8 @@ extension ContactListViewController: UITableViewDelegate, UITableViewDataSource 
             }
         } else {
             let label = UILabel.init()
-            if sortedNames.count > 1 {
-                label.text = String(sortedNames[section-1][0].first!).uppercased()
+            if sortedContacts.count > 1 {
+                label.text = String(sortedContacts[section-1][0].fullName!.first!).uppercased()
             }
             label.backgroundColor = UIColor.lightGray
             return label
